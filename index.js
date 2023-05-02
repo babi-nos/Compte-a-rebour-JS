@@ -1,5 +1,7 @@
 // Créer la logique de compte à rebours
 
+let totalSeconds;
+
 choice.value = 5 minutes;
 
 choice.value * 60 = totalSeconds;
