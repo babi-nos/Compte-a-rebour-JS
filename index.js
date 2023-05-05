@@ -1,12 +1,32 @@
-// Créer la logique de compte à rebours
-
+const form = document.getElementById("form");
 let totalSeconds;
+let interval;
 
-choice.value = 5 minutes;
+function countDown() {
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconde = totalSeconds % 60;
 
-choice.value * 60 = totalSeconds;
+  const sec = seconde < 10 ? "0" + seconde : seconde;
 
-let minutes = Math.floor(totalSeconds / 60);
-let seconds = totalSeconds % 60
+  countdownDisplay.textContent = `${minutes} : ${sec}`;
 
-// Créer un événement à la validation du form pour lancer le compte à rebours
+  if (totalSeconds > 0) {
+    totalSeconds--;
+  } else {
+    countdownDisplay.textContent = "BBBBBBBBBBBBBBBuuuuuuuuuuut";
+    clearInterval(interval);
+  }
+}
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  if (isNaN(choice.value)) {
+    alert("whaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+  } else {
+    totalSeconds = choice.value * 60;
+    choice.value = "";
+    clearInterval(interval);
+    interval = setInterval(countDown, 1000);
+  }
+});
